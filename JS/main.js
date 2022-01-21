@@ -11,7 +11,7 @@ fetch("https://type.fit/api/quotes")
         console.log(data);
 
         for(let i=0; i<quotes.length; i++) {
-            quotes[i].setAttribute("value", data[i].text);
+            quotes[i].setAttribute("value", "\"" + data[i].text + "\" ~" + data[i].author);
         }
 
     })
