@@ -16,6 +16,7 @@
     <a-assets>
         <a-asset-model id="butterfly" src="models/Butterfly.gltf"></a-asset-model>
         <a-asset-model id="planet" src="models/planet.gltf"></a-asset-model>
+        <a-asset-item id="paintbrush" src="models/paintbrush.gltf"></a-asset-item>
     </a-assets>
 
     <a-entity camera></a-entity>
@@ -56,6 +57,7 @@
 
     <!-- https://www.designandartemis.com/product-page/the-big-unknown-2 -->
     <a-marker type="barcode" value="11">
+        <a-entity gltf-model="#paintbrush" position="1 -1 0.5" rotation="90 0 180" scale="0.2 0.2 0.2"></a-entity>
         <a-entity gltf-model="#planet" scale="0.1 0.1 0.1" animation="loop: true; from: 0 0 0; to: 0 0 360; easing: linear; dur: 20000; property: rotation;"></a-entity>
     </a-marker>
 
