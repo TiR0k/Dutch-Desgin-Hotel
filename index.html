@@ -56,12 +56,13 @@
     </a-marker>
 
     <!-- https://www.designandartemis.com/product-page/the-big-unknown-2 -->
-    <!-- <a-marker type="barcode" value="11"> --><a-marker preset='hiro'>
+    <!-- <a-marker type="barcode" value="11"> --><a-marker preset='hiro' id="bigunknown" markerhandler>
         <a-entity gltf-model="#paintbrush" position="1 -1 0.5" rotation="90 0 180" scale="0.2 0.2 0.2"></a-entity>
         <a-entity gltf-model="#planet" scale="0.1 0.1 0.1" animation="loop: true; from: 0 0 0; to: 0 0 360; easing: linear; dur: 20000; property: rotation;"></a-entity>
         <a-text id="js--bigunknowntext" value="" color="red" position="-0.5 0 0.7" rotation="-90 0 0" width="1.5"></a-text>
     </a-marker>
-    <a-marker type="barcode" value="12">
+
+    <a-marker type="barcode" value="12" id="anderemarker" markerhandler>
         <a-text id="js--anderetext" value="" color="red" position="-0.5 0 0.7" rotation="-90 0 0" width="1.5"></a-text>
     </a-marker>
 
