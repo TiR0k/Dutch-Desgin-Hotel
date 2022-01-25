@@ -90,7 +90,7 @@ window.onload = () => {
     const bigunknownmarker = document.getElementById('bigunknown');
     const anderemarker = document.getElementById('anderemarker');
 
-    AFRAME.registerComponent('markerhandler', {
+    AFRAME.registerComponent('markerhandler', { // voeg dit component toe aan je marker!
         tick: function() {           
             if(bigunknownmarker.object3D.visible == true) { // voeg else if's toe van je eigen marker
                 if (!factsRunning) {
