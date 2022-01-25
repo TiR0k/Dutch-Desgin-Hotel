@@ -23,7 +23,7 @@ window.onload = () => {
     
     
     // TEXT / FEITEN FUNCTIONALITEIT
-
+    
     // show facts
     const showFacts = (file, text) => {
         let i = 0;
@@ -32,7 +32,7 @@ window.onload = () => {
         factsLoop(file, facts, i);
     }
 
-    const setFile = (file, facts, i) => {
+    const nextFact = (file, facts, i) => {
         switch(file) {
             // zet je file en tekst.setAttribute hierbij
             case 'files/bigunknown.txt':
@@ -49,11 +49,12 @@ window.onload = () => {
     let delay = 5000; // time between facts in ms
     const factsLoop = (file, facts, i) => {
         if (!timeout) { // zorgt ervoor dat er geen delay is voor het eerste element
-            setFile(file, facts, i);
+            nextFact(file, facts, i);
         }
+        nextFact(file, facts, i); // zorgt ervoor dat de delay na het eerste element niet dubbel is
         timeout = true;
         setTimeout(() => {  
-            setFile(file, facts, i);
+            nextFact(file, facts, i);
             i++;
             if (i < facts.length) {
                 factsLoop(file, facts, i);
@@ -71,7 +72,7 @@ window.onload = () => {
     const anderetext = document.getElementById("js--anderetext");
     
     const readTextFile = (file) => {
-        var rawFile = new XMLHttpRequest();
+        let rawFile = new XMLHttpRequest();
         rawFile.open("GET", file, false);
         rawFile.onreadystatechange = function () {
             if(rawFile.readyState === 4) {
@@ -84,7 +85,13 @@ window.onload = () => {
         rawFile.send(null);
     }
 
-    var factsRunning = false;
+    let factsRunning = false;
+    const initiateText = (file) => {
+        if (!factsRunning) {
+            readTextFile(file);
+            factsRunning = true;
+        }
+    }
 
     // declareer je marker
     const bigunknownmarker = document.getElementById('bigunknown');
@@ -92,19 +99,12 @@ window.onload = () => {
 
     AFRAME.registerComponent('markerhandler', { // voeg dit component toe aan je marker!
         tick: function() {           
-            if(bigunknownmarker.object3D.visible == true) { // voeg else if's toe van je eigen marker
-                if (!factsRunning) {
-                    readTextFile('files/bigunknown.txt');
-                    factsRunning = true;
-                }
+            if(bigunknownmarker.object3D.visible == true) { // voeg else ifs toe van je eigen marker en file
+                initiateText('files/bigunknown.txt');
             }
             else if (anderemarker.object3D.visible == true) {
-                if (!factsRunning) {
-                    readTextFile('files/anderetext.txt');
-                    factsRunning = true;
-                }
+                initiateText('files/anderetext.txt');
             }
-
         }
     });
 }
