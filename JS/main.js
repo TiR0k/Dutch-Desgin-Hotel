@@ -38,6 +38,7 @@ window.onload = () => {
     const factsLoop = (file, facts, i) => {
         setTimeout(() => {
             switch(file) {
+                // zet je file en tekst.setAttribute hierbij
                 case 'files/bigunknown.txt':
                     bigunknowntext.setAttribute("value", facts[i]);
                     break;
@@ -52,9 +53,11 @@ window.onload = () => {
         }, delay);
     }
 
+    // declareer je tekst element
     const bigunknowntext = document.getElementById("js--bigunknowntext");
     const anderetext = document.getElementById("js--anderetext");
-    function readTextFile(file) {
+    
+    const readTextFile = (file) => {
         var rawFile = new XMLHttpRequest();
         rawFile.open("GET", file, false);
         rawFile.onreadystatechange = function () {
@@ -68,9 +71,8 @@ window.onload = () => {
         rawFile.send(null);
     }
 
+    // zet je file hierbij
     readTextFile('files/bigunknown.txt');
     readTextFile('files/anderetext.txt');
     
 }
-
-
