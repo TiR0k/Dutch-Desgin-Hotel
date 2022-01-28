@@ -23,6 +23,16 @@ window.onload = () => {
     
     
     // TEXT / FEITEN FUNCTIONALITEIT
+
+    // Variabelen
+    const bigunknownfile = "files/bigunknown.txt";
+    const amaranthinefile = "files/amaranthine.txt";
+
+    const bigunknownmarker = document.getElementById('bigunknown');
+    const amaranthinemarker = document.getElementById('amaranthine');
+
+    const bigunknowntext = document.getElementById("js--bigunknowntext");
+    const amaranthinetext = document.getElementById("js--amaranthinetext");
     
     // show facts
     const showFacts = (file, text) => {
@@ -35,11 +45,11 @@ window.onload = () => {
     const nextFact = (file, facts, i) => {
         switch(file) {
             // zet je file en tekst.setAttribute hierbij
-            case 'files/bigunknown.txt':
+            case bigunknownfile:
                 bigunknowntext.setAttribute("value", facts[i]);
                 break;
-            case 'files/anderetext.txt':
-                anderetext.setAttribute("value", facts[i]);
+            case bigunknownfile:
+                amaranthinetext.setAttribute("value", facts[i]);
                 break;
         }
     }
@@ -66,10 +76,6 @@ window.onload = () => {
         }, delay);
         
     }
-
-    // declareer je tekst element
-    const bigunknowntext = document.getElementById("js--bigunknowntext");
-    const anderetext = document.getElementById("js--anderetext");
     
     const readTextFile = (file) => {
         let rawFile = new XMLHttpRequest();
@@ -93,28 +99,14 @@ window.onload = () => {
         }
     }
 
-    // declareer je marker
-    const bigunknownmarker = document.getElementById('bigunknown');
-<<<<<<< Updated upstream
-    const anderemarker = document.getElementById('anderemarker');
-=======
-    //const anderemarker = document.getElementById('anderemarker');
->>>>>>> Stashed changes
-
     AFRAME.registerComponent('markerhandler', { // voeg dit component toe aan je marker!
         tick: function() {           
             if(bigunknownmarker.object3D.visible == true) { // voeg else ifs toe van je eigen marker en file
-                initiateText('files/bigunknown.txt');
+                initiateText(bigunknownfile);
             }
-<<<<<<< Updated upstream
-            else if (anderemarker.object3D.visible == true) {
-                initiateText('files/anderetext.txt');
+            else if (amaranthinemarker.object3D.visible == true) {
+                initiateText(amaranthinefile);
             }
-=======
-            //else if (anderemarker.object3D.visible == true) {
-            //    initiateText('files/anderetext.txt');
-            //}
->>>>>>> Stashed changes
         }
     });
 
