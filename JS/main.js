@@ -95,16 +95,26 @@ window.onload = () => {
 
     // declareer je marker
     const bigunknownmarker = document.getElementById('bigunknown');
+<<<<<<< Updated upstream
     const anderemarker = document.getElementById('anderemarker');
+=======
+    //const anderemarker = document.getElementById('anderemarker');
+>>>>>>> Stashed changes
 
     AFRAME.registerComponent('markerhandler', { // voeg dit component toe aan je marker!
         tick: function() {           
             if(bigunknownmarker.object3D.visible == true) { // voeg else ifs toe van je eigen marker en file
                 initiateText('files/bigunknown.txt');
             }
+<<<<<<< Updated upstream
             else if (anderemarker.object3D.visible == true) {
                 initiateText('files/anderetext.txt');
             }
+=======
+            //else if (anderemarker.object3D.visible == true) {
+            //    initiateText('files/anderetext.txt');
+            //}
+>>>>>>> Stashed changes
         }
     });
 
