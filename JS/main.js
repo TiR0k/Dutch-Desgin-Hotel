@@ -48,7 +48,7 @@ window.onload = () => {
             case bigunknownfile:
                 bigunknowntext.setAttribute("value", facts[i]);
                 break;
-            case bigunknownfile:
+            case amaranthinefile:
                 amaranthinetext.setAttribute("value", facts[i]);
                 break;
         }
